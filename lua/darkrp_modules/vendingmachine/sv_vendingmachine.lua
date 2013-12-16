@@ -39,11 +39,29 @@ vm.speedtimer		= 5
 vm.speedmult		= 1.5
 
 -- Spawn locations of your vending machines.
-hook.Add( "InitPostEntity", "SpawnVendingMachine", function()
-	local vendingmachine = ents.Create( "rp_vendingmachine" )
-	vendingmachine:SetPos( Vector( -1780, -677, -148 ) ) -- Location of vending machine.
-	vendingmachine:SetAngles( Angle( 0, -90, 0 ) ) -- Angle of vending machine.
-	vendingmachine:Spawn()
+vm.mapspawn = {} -- Do not edit this line
+
+--[[
+	vm.mapspawn["map_name"] = {		-- Specifies map that Vending Machine spawns on.
+		pos = Vector( 0, 0, 0 ),	-- Specifies the vector of the Vending Machine.
+		ang = Angle( 0, 0, 0 )		-- Specifies the angle of the Vending Machine.
+	}
+]]--
+
+vm.mapspawn["rp_downtown_v4c_v2"] = {
+	pos = Vector( -1780, -677, -148 ),
+	ang = Angle( 0, -90, 0 )
+}
+
+hook.Add( "InitPostEntity", "SpawnVendingMachines", function()
+	local vmSpawn = vm.mapspawn[ game.GetMap() ]
+	if ( vmSpawn ) then
+		local vendingmachine = ents.Create( "rp_vendingmachine" )
+		vendingmachine:SetPos( vmSpawn.pos )
+		vendingmachine:SetAngles( vmSpawn.ang )
+		vendingmachine:SetMoveType( MOVETYPE_NONE )
+		vendingmachine:Spawn()
+	end
 end )
 
 -- Do not edit below this point.

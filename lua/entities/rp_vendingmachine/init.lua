@@ -76,3 +76,15 @@ function ENT:OnRemove()
 	if not IsValid(self) then return end
 	timer.Destroy( self:EntIndex() .. "rp_soda" )
 end
+
+function VendingMachineSpawn()
+	local vmSpawn = vm.mapspawn[ game.GetMap() ]
+	if ( vmSpawn ) then
+		local vendingmachine = ents.Create( "rp_vendingmachine" )
+		vendingmachine:SetPos( vmSpawn.pos )
+		vendingmachine:SetAngles( vmSpawn.ang )
+		vendingmachine:SetMoveType( MOVETYPE_NONE )
+		vendingmachine:Spawn()
+	end
+end
+hook.Add( "InitPostEntity", "SpawnVendingMachines", VendingMachineSpawn )

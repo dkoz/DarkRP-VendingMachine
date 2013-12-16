@@ -53,17 +53,6 @@ vm.mapspawn["rp_downtown_v4c_v2"] = {
 	ang = Angle( 0, -90, 0 )
 }
 
-hook.Add( "InitPostEntity", "SpawnVendingMachines", function()
-	local vmSpawn = vm.mapspawn[ game.GetMap() ]
-	if ( vmSpawn ) then
-		local vendingmachine = ents.Create( "rp_vendingmachine" )
-		vendingmachine:SetPos( vmSpawn.pos )
-		vendingmachine:SetAngles( vmSpawn.ang )
-		vendingmachine:SetMoveType( MOVETYPE_NONE )
-		vendingmachine:Spawn()
-	end
-end )
-
 -- Do not edit below this point.
 resource.AddFile( "sound/oasisrp/soda/slurp.wav" )
 resource.AddFile( "sound/oasisrp/soda/burp.wav" )

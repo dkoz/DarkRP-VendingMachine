@@ -48,7 +48,7 @@ function ENT:Use( activator )
 		end )
 	end
 	if vm.enablehunger == true then
-		activator:SetSelfDarkRPVar( "Energy", math.Clamp( ( activator:getDarkRPVar("Energy") or 100 ) + vm.sodaenergy, 0, 100 ) )
+		activator:setSelfDarkRPVar( "Energy", math.Clamp( ( activator:getDarkRPVar("Energy") or 100 ) + vm.sodaenergy, 0, 100 ) )
 	end
 	if vm.enableheal == true then
 		activator:SetHealth( math.Clamp( ( activator:Health() or 100 ) + vm.sodaheal, 0, 100) )

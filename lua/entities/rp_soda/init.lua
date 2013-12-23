@@ -34,12 +34,14 @@ function ENT:OnTakeDamage(dmg)
 end
 
 function ENT:Use( activator )
-	timer.Simple(0, function()
+	timer.Simple( 0, function()
 		activator:EmitSound( "oasisrp/soda/slurp.wav", 50, 100 )
-	end)
+	end )
+	
 	if vm.enablearmor == true then
 		activator:SetArmor( math.Clamp( ( activator:Armor() or 100 ) + vm.sodasuit, 0, 100 ) )
 	end
+	
 	if vm.enablespeed == true then
 		local runspeed = GAMEMODE.Config.runspeed
 		activator:SetRunSpeed( runspeed * vm.speedmult )
@@ -47,14 +49,18 @@ function ENT:Use( activator )
 			activator:SetRunSpeed( runspeed )
 		end )
 	end
+	
 	if vm.enablehunger == true then
 		activator:setSelfDarkRPVar( "Energy", math.Clamp( ( activator:getDarkRPVar("Energy") or 100 ) + vm.sodaenergy, 0, 100 ) )
 	end
+	
 	if vm.enableheal == true then
 		activator:SetHealth( math.Clamp( ( activator:Health() or 100 ) + vm.sodaheal, 0, 100) )
 	end
+	
 	self:Remove()
-	timer.Simple(3, function()
+	
+	timer.Simple( 3, function()
 		activator:EmitSound( "oasisrp/soda/burp.wav", 50, 100 )
-	end)
+	end )
 end

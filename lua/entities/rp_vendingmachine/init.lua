@@ -1,6 +1,6 @@
 --[[
 	Author: Koz
-	Steam: http://steamcommunity.com/id/drunkenkoz
+	Steam: http://steamcommunity.com/profiles/76561197989811664
 	Contact: mybbkoz@gmail.com
 
 	License:
@@ -11,6 +11,8 @@
 
 AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
+
+sodaprice = vm.sodaprice
 
 function ENT:Initialize()
 	self:SetModel( "models/props_interiors/VendingMachineSoda01a.mdl" )
@@ -41,8 +43,6 @@ function ENT:Use( ply, activator )
 			
 		end
 	end
-	
-	local sodaprice = vm.sodaprice
 	
 	if not activator:canAfford( sodaprice ) then
 		DarkRP.notify( ply, 1, 4, "You can't afford a soda!" )

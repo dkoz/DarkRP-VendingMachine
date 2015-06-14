@@ -1,5 +1,5 @@
 Author: KoZ
-Steam: http://steamcommunity.com/id/drunkenkoz
+Steam: http://steamcommunity.com/profiles/76561197989811664
 Contact: mybbkoz@gmail.com
 
 License:

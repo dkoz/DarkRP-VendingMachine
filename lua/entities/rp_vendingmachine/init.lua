@@ -12,7 +12,7 @@
 AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
-sodaprice = vm.sodaprice
+sodaprice = vm.config.sodaprice
 
 function ENT:Initialize()
 	self:SetModel( "models/props_interiors/VendingMachineSoda01a.mdl" )
@@ -33,7 +33,7 @@ ENT.Once = false
 function ENT:Use( ply, activator )
 	if self.Once then return end
 
-	if vm.disablewithcook == true then
+	if vm.config.disablewithcook == true then
 		local cook = false
 		for k, v in pairs( player.GetAll() ) do
 			if v:Team() == TEAM_COOK then
@@ -75,7 +75,7 @@ function ENT:OnRemove()
 end
 
 function VendingMachineSpawn()
-	local vmSpawn = vm.mapspawn[ game.GetMap() ]
+	local vmSpawn = vm.config.mapspawn[ game.GetMap() ]
 	if ( vmSpawn ) then
 		local vendingmachine = ents.Create( "rp_vendingmachine" )
 		vendingmachine:SetPos( vmSpawn.pos )

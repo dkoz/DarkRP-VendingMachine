@@ -9,9 +9,7 @@ from the original author, Koz.
 
 Installation:
 1) Drag the darkrpvendingmachine-master folder into your addons folder.
-2) Configure the vending machine in lua/darkrp_modules/vendingmachine to 
-match your map and what you want.
-3) Restart your server and enjoy.
+2) Restart your server and enjoy.
 
 FAQ?
 

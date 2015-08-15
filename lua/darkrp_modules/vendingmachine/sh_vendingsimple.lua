@@ -9,7 +9,6 @@
 	from the original author, Koz.
 ]]--
 
-AddCSLuaFile() -- Do not edit this line.
 vm = vm or {} -- Do not edit this line.
 vm.config = {} -- Do not edit this line.
 

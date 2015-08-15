@@ -12,7 +12,7 @@
 AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
-sodaprice = vm.config.sodaprice
+sodaprice = 25
 
 function ENT:Initialize()
 	self:SetModel( "models/props_interiors/VendingMachineSoda01a.mdl" )
@@ -32,18 +32,6 @@ end
 ENT.Once = false
 function ENT:Use( ply, activator )
 	if self.Once then return end
-
-	--[[ Disabled temporarily until optimized. 
-	if vm.config.disablewithcook == true then
-		local cook = false
-		for k, v in pairs( player.GetAll() ) do
-			if v:Team() == TEAM_COOK then
-				cook = true
-				return ""
-			end
-			
-		end
-	end]]--
 	
 	if not activator:canAfford( sodaprice ) then
 		DarkRP.notify( ply, 1, 4, "You can't afford a soda!" )

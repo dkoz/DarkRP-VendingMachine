@@ -38,25 +38,7 @@ function ENT:Use( activator )
 		activator:EmitSound( "oasisrp/soda/slurp.wav", 50, 100 )
 	end )
 	
-	if vm.config.enablearmor == true then
-		activator:SetArmor( math.Clamp( ( activator:Armor() or 100 ) + vm.config.sodasuit, 0, 100 ) )
-	end
-	
-	if vm.config.enablespeed == true then
-		local runspeed = GAMEMODE.Config.runspeed
-		activator:SetRunSpeed( runspeed * vm.config.speedmult )
-		timer.Simple( vm.config.speedtimer, function()
-			activator:SetRunSpeed( runspeed )
-		end )
-	end
-	
-	if vm.config.enablehunger == true then
-		activator:setSelfDarkRPVar( "Energy", math.Clamp( ( activator:getDarkRPVar("Energy") or 100 ) + vm.config.sodaenergy, 0, 100 ) )
-	end
-	
-	if vm.config.enableheal == true then
-		activator:SetHealth( math.Clamp( ( activator:Health() or 100 ) + vm.config.sodaheal, 0, 100) )
-	end
+	activator:SetHealth( math.Clamp( ( activator:Health() or 100 ) + math.random(10,25), 0, 100) )
 	
 	self:Remove()
 	

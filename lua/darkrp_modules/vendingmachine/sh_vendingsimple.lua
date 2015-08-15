@@ -15,31 +15,6 @@ vm.config = {} -- Do not edit this line.
 
 -- Configuration - Edit below this line
 
--- Toggle the soda effect on and off.
-vm.config.enableheal		= true
-vm.config.enablearmor		= false
-vm.config.enablespeed		= false
-vm.config.enablehunger		= false
-
--- Sounds annoying you? Disable them.
-vm.config.enablesounds		= true
-
--- Disable vending machine when there is a cook.
--- vm.config.disablewithcook	= false
-
--- Controls how much soda will cost from vending machine.
-vm.config.sodaprice		= 25
--- Controls how much health the soda will give.
-vm.config.sodaheal			= 15
--- Controls how much energy the soda will give. (HungerMod Only)
-vm.config.sodaenergy		= 5
--- Control how much armor the soda will give.
-vm.config.sodasuit			= 10
--- Control the amount of time the speed boost will last.
-vm.config.speedtimer		= 5
--- Controls the speed multiplier.
-vm.config.speedmult		= 1.5
-
 -- Spawn locations of your vending machines.
 vm.config.mapspawn = {} -- Do not edit this line
 

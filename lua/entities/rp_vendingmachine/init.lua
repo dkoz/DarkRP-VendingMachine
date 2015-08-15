@@ -33,6 +33,7 @@ ENT.Once = false
 function ENT:Use( ply, activator )
 	if self.Once then return end
 
+	--[[ Disabled temporarily until optimized. 
 	if vm.config.disablewithcook == true then
 		local cook = false
 		for k, v in pairs( player.GetAll() ) do
@@ -42,7 +43,7 @@ function ENT:Use( ply, activator )
 			end
 			
 		end
-	end
+	end]]--
 	
 	if not activator:canAfford( sodaprice ) then
 		DarkRP.notify( ply, 1, 4, "You can't afford a soda!" )

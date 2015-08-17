@@ -51,6 +51,16 @@ vm.config.mapspawn = {} -- Do not edit this line
 ]]--
 
 vm.config.mapspawn["rp_downtown_v4c_v2"] = {
-	pos = Vector( -1780, -677, -148 ),
-	ang = Angle( 0, -90, 0 )
+	{
+		pos = Vector( -1780, -677, -148 ),
+		ang = Angle( 0, -90, 0 )
+	},
+	{
+		pos = Vector( 1319, -1100, -148 ),
+		ang = Angle( 0, -180, 0 )
+	},
+	{
+		pos = Vector( -1430, -7136, -148 ),
+		ang = Angle( 0, 90, 0 )
+	}
 }

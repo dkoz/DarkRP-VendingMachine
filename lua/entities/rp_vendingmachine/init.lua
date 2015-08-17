@@ -77,10 +77,11 @@ end
 
 function VendingMachineSpawn()
 	local vmSpawn = vm.config.mapspawn[ game.GetMap() ]
-	if ( vmSpawn ) then
+	
+	for k, v in pairs( vmSpawn ) do
 		local vendingmachine = ents.Create( "rp_vendingmachine" )
-		vendingmachine:SetPos( vmSpawn.pos )
-		vendingmachine:SetAngles( vmSpawn.ang )
+		vendingmachine:SetPos( v.pos )
+		vendingmachine:SetAngles( v.ang )
 		vendingmachine:SetMoveType( MOVETYPE_NONE )
 		vendingmachine:Spawn()
 	end

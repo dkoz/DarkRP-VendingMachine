@@ -46,14 +46,14 @@ function ENT:Use( ply, activator )
 	end]]--
 	
 	if not activator:canAfford( sodaprice ) then
-		DarkRP.notify( ply, 1, 4, "You can't afford a soda!" )
+		DarkRP.notify( ply, 1, 4, "You can't afford a ration!" )
 		return ""
 	end
 	
 	self.Once = true
 	
 	activator:addMoney( -sodaprice )
-	DarkRP.notify( ply, 1, 4, "You've spent " .. GAMEMODE.Config.currency .. sodaprice .. " on a soda." )
+	DarkRP.notify( ply, 1, 4, "You purchased a ration for " .. GAMEMODE.Config.currency .. sodaprice .."." )
 	activator:EmitSound("oasisrp/vendingmachine/insertcoin.wav", 50, 100)
 	timer.Create( self:EntIndex() .. "rp_soda", 1.5, 1, function()
 		if not IsValid(self) then return end
@@ -63,7 +63,7 @@ end
 
 function ENT:CreateSoda()
 	self.Once = false
-	local pos, ang = LocalToWorld( Vector( 20, -5, -30 ), Angle( -90, -90, 0 ), self:GetPos(), self:GetAngles() )
+	local pos, ang = LocalToWorld( Vector( 15, 0, -22 ), Angle( 30, 0, 0 ), self:GetPos(), self:GetAngles() )
 	local soda = ents.Create( "rp_soda" )
 	soda:SetPos( pos )
 	soda:SetAngles( ang )

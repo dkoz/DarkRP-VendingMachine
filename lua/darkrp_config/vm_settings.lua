@@ -19,26 +19,29 @@ vm.config = {} -- Do not edit this line.
 vm.config.enableheal		= true
 vm.config.enablearmor		= false
 vm.config.enablespeed		= false
-vm.config.enablehunger		= false
+vm.config.enablehunger		= true
+vm.config.enablethirst		= true
 
 -- Sounds annoying you? Disable them.
 vm.config.enablesounds		= true
 
 -- Disable vending machine when there is a cook.
--- vm.config.disablewithcook	= false
+vm.config.disablewithcook	= false
 
 -- Controls how much soda will cost from vending machine.
-vm.config.sodaprice		= 25
+vm.config.sodaprice		= 20
 -- Controls how much health the soda will give.
-vm.config.sodaheal			= 15
+vm.config.sodaheal		= -5
 -- Controls how much energy the soda will give. (HungerMod Only)
-vm.config.sodaenergy		= 5
+vm.config.sodaenergy		= 10
+-- Controls how much thirst the soda will give.
+vm.config.sodathirst		= 10
 -- Control how much armor the soda will give.
-vm.config.sodasuit			= 10
+vm.config.sodasuit		= 0
 -- Control the amount of time the speed boost will last.
-vm.config.speedtimer		= 5
+vm.config.speedtimer		= 30
 -- Controls the speed multiplier.
-vm.config.speedmult		= 1.5
+vm.config.speedmult		= .5
 
 -- Spawn locations of your vending machines.
 vm.config.mapspawn = {} -- Do not edit this line
@@ -50,17 +53,19 @@ vm.config.mapspawn = {} -- Do not edit this line
 	}
 ]]--
 
-vm.config.mapspawn["rp_downtown_v4c_v2"] = {
+vm.config.mapspawn["rp_southside_day"] = {
 	{
-		pos = Vector( -1780, -677, -148 ),
+		pos = Vector( -6256.330566, 1120.998657, 82 ),
 		ang = Angle( 0, -90, 0 )
 	},
+
 	{
-		pos = Vector( 1319, -1100, -148 ),
-		ang = Angle( 0, -180, 0 )
+		pos = Vector( 957.351563, 13800.475586, 212.031250 ),
+		ang = Angle( 0, -90, 0 )
 	},
+
 	{
-		pos = Vector( -1430, -7136, -148 ),
-		ang = Angle( 0, 90, 0 )
-	}
+		pos = Vector( -1051.470703, 1988.245239, -9.968750 ),
+		ang = Angle( 0, 180, 0 )
+	},
 }

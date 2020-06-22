@@ -17,19 +17,19 @@ sodaprice = vm.config.sodaprice
 local cooksOnline = 0
 
 for k, v in pairs( player.GetAll() ) do
-    if v:Team() == TEAM_COOK then
-        cooksOnline = cooksOnline + 1
-    end
+	if v:Team() == TEAM_COOK then
+		cooksOnline = cooksOnline + 1
+	end
 end
 
 hook.Add( "DarkRPVarChanged", "DarkRPVendingMachineCookTracking", function( ply, varName, old, new )
-    if varName ~= "job" then return end
-    if new == "Cook" then
-    	cooksOnline = cooksOnline + 1
-    end
-    if old == "Cook" then
-        cooksOnline = cooksOnline - 1
-    end
+	if varName ~= "job" then return end
+	if new == "Cook" then
+		cooksOnline = cooksOnline + 1
+	end
+	if old == "Cook" then
+		cooksOnline = cooksOnline - 1
+	end
 end )
 
 hook.Add( "PlayerDisconnected", "DarkRPVendingMachineCookTracking",function( ply )
@@ -58,9 +58,9 @@ function ENT:Use( ply, activator )
 	if self.Once then return end
  
 	if vm.config.disablewithcook == true then
-        if cooksOnline > 0 then return end
-    end
-    	
+		if cooksOnline > 0 then return end
+	end
+		
 	if not activator:canAfford( sodaprice ) then
 		DarkRP.notify( ply, 1, 4, "You can't afford a ration!" )
 		return ""

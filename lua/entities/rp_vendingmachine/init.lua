@@ -14,6 +14,30 @@ include( "shared.lua" )
 
 sodaprice = vm.config.sodaprice
 
+local cooksOnline = 0
+
+for k, v in pairs( player.GetAll() ) do
+    if v:Team() == TEAM_COOK then
+        cooksOnline = cooksOnline + 1
+    end
+end
+
+hook.Add( "DarkRPVarChanged", "DarkRPVendingMachineCookTracking", function( ply, varName, old, new )
+    if varName ~= "job" then return end
+    if new == "Cook" then
+    	cooksOnline = cooksOnline + 1
+    end
+    if old == "Cook" then
+        cooksOnline = cooksOnline - 1
+    end
+end )
+
+hook.Add( "PlayerDisconnected", "DarkRPVendingMachineCookTracking",function( ply )
+	if ply:Team() == TEAM_COOK then
+		cooksOnline = cooksOnline - 1
+	end
+end )
+
 function ENT:Initialize()
 	self:SetModel( "models/props_interiors/VendingMachineSoda01a.mdl" )
 	self:PhysicsInit( SOLID_VPHYSICS )
@@ -32,19 +56,11 @@ end
 ENT.Once = false
 function ENT:Use( ply, activator )
 	if self.Once then return end
-
-	--[[ Disabled temporarily until optimized. 
+ 
 	if vm.config.disablewithcook == true then
-		local cook = false
-		for k, v in pairs( player.GetAll() ) do
-			if v:Team() == TEAM_COOK then
-				cook = true
-				return ""
-			end
-			
-		end
-	end]]--
-	
+        if cooksOnline > 0 then return end
+    end
+    	
 	if not activator:canAfford( sodaprice ) then
 		DarkRP.notify( ply, 1, 4, "You can't afford a ration!" )
 		return ""

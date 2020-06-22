@@ -26,7 +26,7 @@ vm.config.enablethirst		= true
 vm.config.enablesounds		= true
 
 -- Disable vending machine when there is a cook.
-vm.config.disablewithcook	= false
+vm.config.disablewithcook	= true
 
 -- Controls how much soda will cost from vending machine.
 vm.config.sodaprice		= 20

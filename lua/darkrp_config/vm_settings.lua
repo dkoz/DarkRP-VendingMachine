@@ -82,7 +82,7 @@ vm.config.mapspawn["rp_downtown_evilmelon_v1"] = {
 	},
 
 	{
-		pos = Vector( -2327, 163, 49.031250 ),
+		pos = Vector( -2327, 3180, 49.031250 ),
 		ang = Angle( 0, 0, 0 )
 	},
 }

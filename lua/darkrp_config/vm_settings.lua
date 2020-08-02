@@ -72,17 +72,17 @@ vm.config.mapspawn["rp_southside_day"] = {
 
 vm.config.mapspawn["rp_downtown_evilmelon_v1"] = {
 	{
-		pos = Vector( 391, -1548, 49.031250 ),
+		pos = Vector( 391, -1565, 49.031250 ),
 		ang = Angle( 0, 90, 0 )
 	},
 
 	{
-		pos = Vector( -2327, 163, 49.031250 ),
+		pos = Vector( -2327, 170, 49.031250 ),
 		ang = Angle( 0, -90, 0 )
 	},
 
 	{
-		pos = Vector( -2327, 3180, 49.031250 ),
+		pos = Vector( -999, 3180, 49.031250 ),
 		ang = Angle( 0, 0, 0 )
 	},
 }

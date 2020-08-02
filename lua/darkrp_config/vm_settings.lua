@@ -69,3 +69,20 @@ vm.config.mapspawn["rp_southside_day"] = {
 		ang = Angle( 0, 180, 0 )
 	},
 }
+
+vm.config.mapspawn["rp_downtown_evilmelon_v1"] = {
+	{
+		pos = Vector( 391, -1548, 49.031250 ),
+		ang = Angle( 0, 90, 0 )
+	},
+
+	{
+		pos = Vector( -2327, 163, 49.031250 ),
+		ang = Angle( 0, -90, 0 )
+	},
+
+	{
+		pos = Vector( -2327, 163, 49.031250 ),
+		ang = Angle( 0, 0, 0 )
+	},
+}

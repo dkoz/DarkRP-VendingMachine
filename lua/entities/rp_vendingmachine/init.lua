@@ -12,7 +12,7 @@
 AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
-sodaprice = vm.config.sodaprice
+sodaprice = vm.config.sodaPrice
 
 local cooksOnline = 0
 
@@ -57,19 +57,19 @@ ENT.Once = false
 function ENT:Use( ply, activator )
 	if self.Once then return end
  
-	if vm.config.disablewithcook == true then
+	if vm.config.enableCook == true then
 		if cooksOnline > 0 then return end
 	end
 		
 	if not activator:canAfford( sodaprice ) then
-		DarkRP.notify( ply, 1, 4, "You can't afford a ration!" )
+		DarkRP.notify( ply, 1, 4, "You can't afford a soda!" )
 		return ""
 	end
 	
 	self.Once = true
 	
 	activator:addMoney( -sodaprice )
-	DarkRP.notify( ply, 1, 4, "You purchased a ration for " .. GAMEMODE.Config.currency .. sodaprice .."." )
+	DarkRP.notify( ply, 1, 4, "You purchased a soda for " .. GAMEMODE.Config.currency .. sodaprice .."." )
 	activator:EmitSound("oasisrp/vendingmachine/insertcoin.wav", 50, 100)
 	timer.Create( self:EntIndex() .. "rp_soda", 1.5, 1, function()
 		if not IsValid(self) then return end
@@ -79,10 +79,10 @@ end
 
 function ENT:CreateSoda()
 	self.Once = false
-	local pos, ang = LocalToWorld( Vector( 15, 0, -22 ), Angle( 30, 0, 0 ), self:GetPos(), self:GetAngles() )
-	local soda = ents.Create( "rp_soda" )
-	soda:SetPos( pos )
-	soda:SetAngles( ang )
+	local fuck, you = LocalToWorld( Vector( 20, -5, -30 ), Angle( -90, -90, 0 ), self:GetPos(), self:GetAngles())
+	local soda = ents.Create("rp_soda")
+	soda:SetPos( fuck )
+	soda:SetAngles( you )
 	soda:Spawn()
 end
 

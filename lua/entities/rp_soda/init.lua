@@ -68,9 +68,5 @@ function ENT:Use( activator )
 		activator:Kill()
 	end
 	
-	if vm.config.enableThirst == true then
-		activator:setSelfDarkRPVar( "Thirst", math.Clamp( ( activator:getDarkRPVar("Thirst") or 100 ) + vm.config.sodaThirst, 0, 100) )
-	end
-	
 	self:Remove()
 end

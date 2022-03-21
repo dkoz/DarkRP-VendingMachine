@@ -20,7 +20,6 @@ vm.config.enableHeal		= true
 vm.config.enableArmor		= false
 vm.config.enableSpeed		= false
 vm.config.enableHunger		= false
-vm.config.enableThirst		= false
 
 -- Sounds annoying you? Disable them.
 -- I think I never actually implemented this until now. lol
@@ -35,8 +34,6 @@ vm.config.sodaPrice			= 25
 vm.config.sodaHeal			= 15
 -- Controls how much energy the soda will give. (HungerMod Only)
 vm.config.sodaEnergy		= 10
--- Controls how much thirst the soda will give.
-vm.config.sodaThirst		= 10
 -- Control how much armor the soda will give.
 vm.config.sodaArmor			= 10
 -- Control the amount of time the speed boost will last.

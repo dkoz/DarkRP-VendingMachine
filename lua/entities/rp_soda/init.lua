@@ -13,12 +13,12 @@ AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
 function ENT:Initialize()
-	self:SetModel("models/props_junk/PopCan01a.mdl")
+	self:SetModel("models/weapons/w_package.mdl")
 	self:PhysicsInit( SOLID_VPHYSICS )
 	self:SetMoveType( MOVETYPE_VPHYSICS )
 	self:SetSolid( SOLID_VPHYSICS )
 	self:SetUseType( SIMPLE_USE )
-	self.health = 10
+	self.health = 100
 	
 	local phys = self:GetPhysicsObject()
 	if phys:IsValid() then
@@ -34,10 +34,10 @@ function ENT:OnTakeDamage(dmg)
 end
 
 function ENT:Use( activator )
-	timer.Simple( 0, function()
+--[[	timer.Simple( 0, function()
 		activator:EmitSound( "oasisrp/soda/slurp.wav", 50, 100 )
 	end )
-	
+	]]
 	if vm.config.enablearmor == true then
 		activator:SetArmor( math.Clamp( ( activator:Armor() or 100 ) + vm.config.sodasuit, 0, 100 ) )
 	end
@@ -57,10 +57,17 @@ function ENT:Use( activator )
 	if vm.config.enableheal == true then
 		activator:SetHealth( math.Clamp( ( activator:Health() or 100 ) + vm.config.sodaheal, 0, 100) )
 	end
+
+	if activator:Health() <= 0 then
+		activator:Kill()
+	end
+	if vm.config.enablethirst == true then
+		activator:setSelfDarkRPVar( "Thirst", math.Clamp( ( activator:getDarkRPVar("Thirst") or 100 ) + vm.config.sodathirst, 0, 100) )
+	end
 	
 	self:Remove()
 	
-	timer.Simple( 3, function()
+	timer.Simple( 1, function()
 		activator:EmitSound( "oasisrp/soda/burp.wav", 50, 100 )
 	end )
 end

@@ -9,15 +9,11 @@ from the original author, Koz.
 
 Installation:
 1) Drag the darkrpvendingmachine-master folder into your addons folder.
-2) Configure the vending machine in lua/darkrp_modules/vendingmachine to 
-match your map and what you want.
+2) Configure the vending machine in lua/darkrp_config/vm_settings.lua
 3) Restart your server and enjoy.
 
-FAQ?
-
-How do I get the vector and angles?
-You just go to the spot where you want the vending machine and type getpos
-in your console. You can mess with the angle until you get it correct.
-
-My vending machine won't spawn what did I do wrong?
-You didn't configure the map portion correctly.
+Saving Vending Machines:
+1) Place Vending Machines where you want them on the map.
+2) Type "!sz vend" in chat to save their locations.
+3) Notification will appear saying they've been saved.
+4) Restart server to confirm.

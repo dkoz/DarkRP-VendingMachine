@@ -91,15 +91,49 @@ function ENT:OnRemove()
 	timer.Destroy( self:EntIndex() .. "rp_soda" )
 end
 
-function VendingMachineSpawn()
-	local vmSpawn = vm.config.mapspawn[ game.GetMap() ]
-	
-	for k, v in pairs( vmSpawn ) do
-		local vendingmachine = ents.Create( "rp_vendingmachine" )
-		vendingmachine:SetPos( v.pos )
-		vendingmachine:SetAngles( v.ang )
-		vendingmachine:SetMoveType( MOVETYPE_NONE )
-		vendingmachine:Spawn()
+
+-- Credits to Code Blue for this.
+-- Saves location of all Vending Machines in a JSON format.
+local function SaveVendingMachine()
+	local data = {}
+	for k ,v in pairs(ents.FindByClass("rp_vendingmachine")) do
+		table.insert(data, {pos = v:GetPos(), ang = v:GetAngles()})
+	end
+	if not file.Exists("rp_vendingmachine" , "DATA") then
+		file.CreateDir("rp_vendingmachine")
+	end
+
+	file.Write("rp_vendingmachine/"..game.GetMap()..".txt", util.TableToJSON(data))
+end
+
+local function LoadVendingMachine()
+	if file.Exists("rp_vendingmachine/"..game.GetMap()..".txt" , "DATA") then
+		local data = file.Read("rp_vendingmachine/"..game.GetMap()..".txt", "DATA")
+		data = util.JSONToTable(data)
+		for k, v in pairs(data) do
+			local slot = ents.Create("rp_vendingmachine")
+			slot:SetPos(v.pos)
+			slot:SetAngles(v.ang)
+			slot:Spawn()
+			slot:GetPhysicsObject():EnableMotion(false)
+		end
+		print("Oasis Vending Machine have loaded in.")
+	else
+		print("No map data found for Oasis Vending Machines. Use !szvend to save locations.")
 	end
 end
-hook.Add( "InitPostEntity", "SpawnVendingMachines", VendingMachineSpawn )
+
+hook.Add("InitPostEntity", "SpawnVendingMachine", function()
+	LoadVendingMachine()
+end)
+
+hook.Add("PlayerSay", "HandleSZVCommands" , function(ply, text)
+	if string.sub(string.lower(text), 1, 10) == "!sz vend" then
+		if table.HasValue(WOL_CONFIG.allowedRanks, ply:GetUserGroup()) then
+			SaveVendingMachine()
+			DarkRP.notify( ply, 0, 4, "Oasis Vending Machine have been save to map name "..game.GetMap().."!")
+		else
+			DarkRP.notify( ply, 0, 4, "You do not have permission to perform this action.")
+		end
+	end
+end)

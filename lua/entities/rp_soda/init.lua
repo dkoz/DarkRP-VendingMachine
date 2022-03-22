@@ -33,15 +33,33 @@ function ENT:OnTakeDamage(dmg)
 	end
 end
 
+-- This is a sound loop for the Soda.
+soundLoop = {
+	{
+		Time = 1,
+		Sound = "oasisrp/soda/opening.wav",
+		Volume = 45
+	},
+	{
+		Time = 2,
+		Sound = "oasisrp/soda/slurp.wav",
+		Volume = 45
+	},
+	{
+		Time = 5,
+		Sound = "oasisrp/soda/burp.wav",
+		Volume = 45
+	},
+}
+
 function ENT:Use( activator )
 	if vm.config.enableSound == true then
-		timer.Simple( 0, function()
-			activator:EmitSound( "oasisrp/soda/slurp.wav", 50, 100 )
-		end )
-		
-		timer.Simple( 3, function()
-			activator:EmitSound( "oasisrp/soda/burp.wav", 50, 100 )
-		end )
+		-- Table for sound loop
+		for k, v in pairs(soundLoop) do
+			timer.Simple( v.Time, function()
+				activator:EmitSound(v.Sound, v.Volume, 100)
+			end)
+		end
 	end
 
 	if vm.config.enableArmor == true then

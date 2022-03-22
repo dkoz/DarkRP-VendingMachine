@@ -4,9 +4,7 @@
 	Contact: mybbkoz@gmail.com
 
 	License:
-	You are free to use this software however you like; however,
-	you cannot redistribute this code in any way without consent
-	from the original author, Koz.
+	Attribution-NonCommercial-ShareAlike 2.0
 ]]--
 
 AddCSLuaFile() -- Do not edit this line.
@@ -44,19 +42,19 @@ vm.config.speedMulti		= 1.5
 -- Table for soundLoop. Allows you to customize/remove sounds.
 vm.config.soundLoop = {
 	{
-		Time = 1,
+		Time = 0,
 		Sound = "oasisrp/soda/opening.wav",
-		Volume = 45
+		Volume = 40
 	},
 	{
-		Time = 2,
+		Time = 1,
 		Sound = "oasisrp/soda/slurp.wav",
-		Volume = 45
+		Volume = 40
 	},
 	{
-		Time = 5,
+		Time = 3.5,
 		Sound = "oasisrp/soda/burp.wav",
-		Volume = 45
+		Volume = 40
 	},
 }
 

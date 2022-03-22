@@ -1,3 +1,12 @@
+--[[
+	Author: Koz
+	Steam: http://steamcommunity.com/profiles/76561197989811664
+	Contact: mybbkoz@gmail.com
+
+	License:
+	Attribution-NonCommercial-ShareAlike 2.0
+]]--
+
 include("darkrp_config/vm_settings.lua")
 
 -- Do not edit below this point.

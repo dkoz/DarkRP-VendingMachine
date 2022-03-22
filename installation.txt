@@ -12,6 +12,6 @@ Installation:
 
 Saving Vending Machines:
 1) Place Vending Machines where you want them on the map.
-2) Type "!sz vend" in chat to save their locations.
+2) Type "!szvend" in chat to save their locations.
 3) Notification will appear saying they've been saved.
 4) Restart server to confirm.

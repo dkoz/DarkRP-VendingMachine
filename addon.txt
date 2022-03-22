@@ -1,9 +1,0 @@
-"AddonInfo"
-{
-	"name"				"DarkRP Vending Machine"
-	"version"			"3.2"
-	"author_name"		"Koz"
-	"author_email"		"mybbkoz@gmail.com"
-	"author_url"		"http://github.com/dkoz"
-	"info"				"This is a working vending machine for DarkRP 2.7"
-}

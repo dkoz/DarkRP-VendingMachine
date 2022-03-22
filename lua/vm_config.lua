@@ -62,4 +62,4 @@ vm.config.soundLoop = {
 }
 
 -- Vending machine spawns are now handled under JSON format
--- Use command "!sz vend" to save location of all vending machines on map.
+-- Use command "!szvend" to save location of all vending machines on map.

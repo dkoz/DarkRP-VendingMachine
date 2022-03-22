@@ -7,12 +7,13 @@
 	Attribution-NonCommercial-ShareAlike 2.0
 ]]--
 
+AddCSLuaFile( "vm_config.lua" )
+include( "vm_config.lua" )
 AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
-sodaprice = vm.config.sodaPrice
-
 local cooksOnline = 0
+local sodaprice = vm.config.sodaPrice
 
 for k, v in pairs( player.GetAll() ) do
 	if v:Team() == TEAM_COOK then
@@ -91,49 +92,50 @@ function ENT:OnRemove()
 	timer.Destroy( self:EntIndex() .. "rp_soda" )
 end
 
-
--- Credits to Code Blue for this.
--- Saves location of all Vending Machines in a JSON format.
-local function SaveVendingMachine()
+-- Credits to Code Blue for JSON save
+function SaveVMachine()
 	local data = {}
-	for k ,v in pairs(ents.FindByClass("rp_vendingmachine")) do
-		table.insert(data, {pos = v:GetPos(), ang = v:GetAngles()})
-	end
-	if not file.Exists("rp_vendingmachine" , "DATA") then
-		file.CreateDir("rp_vendingmachine")
+
+	for k, v in pairs(ents.FindByClass("rp_vendingmachine")) do
+		table.insert(data, {
+			pos = v:GetPos(),
+			ang = v:GetAngles()
+		})
 	end
 
-	file.Write("rp_vendingmachine/"..game.GetMap()..".txt", util.TableToJSON(data))
+	data = util.TableToJSON(data)
+
+	file.Write("vm_"..game.GetMap()..".txt", data)
 end
 
-local function LoadVendingMachine()
-	if file.Exists("rp_vendingmachine/"..game.GetMap()..".txt" , "DATA") then
-		local data = file.Read("rp_vendingmachine/"..game.GetMap()..".txt", "DATA")
-		data = util.JSONToTable(data)
+function LoadVMachine()
+	local data = file.Read("vm_"..game.GetMap()..".txt")
+
+	if data ~= nil then
+		local data = util.JSONToTable(data)
+
 		for k, v in pairs(data) do
-			local slot = ents.Create("rp_vendingmachine")
-			slot:SetPos(v.pos)
-			slot:SetAngles(v.ang)
-			slot:Spawn()
-			slot:GetPhysicsObject():EnableMotion(false)
+			local vend = ents.Create("rp_vendingmachine")
+			vend:SetPos(v.pos)
+			vend:SetAngles(v.ang)
+			vend:Spawn()
+			vend:GetPhysicsObject():EnableMotion(false)
 		end
-		print("Oasis Vending Machine have loaded in.")
-	else
-		print("No map data found for Oasis Vending Machines. Use !szvend to save locations.")
 	end
 end
 
-hook.Add("InitPostEntity", "SpawnVendingMachine", function()
-	LoadVendingMachine()
-end)
+hook.Add( "InitPostEntity", "LoadVMachine", function()
+	LoadVMachine()
+end )
 
-hook.Add("PlayerSay", "HandleSZVCommands" , function(ply, text)
-	if string.sub(string.lower(text), 1, 10) == "!sz vend" then
-		if table.HasValue(WOL_CONFIG.allowedRanks, ply:GetUserGroup()) then
-			SaveVendingMachine()
-			DarkRP.notify( ply, 0, 4, "Oasis Vending Machine have been save to map name "..game.GetMap().."!")
+hook.Add("PlayerSay", "SaveVMachine", function(ply, text)
+	if string.sub(text, 1, 10) == "!szvend" then
+		if table.HasValue(vm.config.allowedRanks, ply:GetUserGroup()) then
+			SaveVMachine()
+			DarkRP.notify( ply, 0, 4, "Vending Machines haved been saved for this map.")
+			return false
 		else
-			DarkRP.notify( ply, 0, 4, "You do not have permission to perform this action.")
+			DarkRP.notify( ply, 0, 4, "You don't have permission to do this.")
 		end
 	end
-end)
+end) 

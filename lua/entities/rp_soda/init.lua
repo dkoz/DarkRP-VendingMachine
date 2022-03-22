@@ -7,8 +7,10 @@
 	Attribution-NonCommercial-ShareAlike 2.0
 ]]--
 
+AddCSLuaFile( "vm_config.lua" )
 AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
+include( "vm_config.lua" )
 
 function ENT:Initialize()
 	self:SetModel( "models/props_junk/PopCan01a.mdl" )

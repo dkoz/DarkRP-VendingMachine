@@ -1,15 +1,4 @@
---[[
-	Author: Koz
-	Steam: http://steamcommunity.com/profiles/76561197989811664
-	Contact: mybbkoz@gmail.com
-
-	License:
-	Attribution-NonCommercial-ShareAlike 2.0
-]]--
-
-include("darkrp_config/vm_settings.lua")
-
--- Do not edit below this point.
+-- Allows files to be downloaded from FTP
 resource.AddFile( "sound/oasisrp/soda/slurp.wav" )
 resource.AddFile( "sound/oasisrp/soda/opening.wav" )
 resource.AddFile( "sound/oasisrp/soda/burp.wav" )

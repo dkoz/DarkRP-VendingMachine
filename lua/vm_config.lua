@@ -6,8 +6,6 @@
 	License:
 	Attribution-NonCommercial-ShareAlike 2.0
 ]]--
-
-AddCSLuaFile() -- Do not edit this line.
 vm = vm or {} -- Do not edit this line.
 vm.config = {} -- Do not edit this line.
 
@@ -38,6 +36,11 @@ vm.config.sodaArmor			= 10
 vm.config.speedTimer		= 30
 -- Controls the speed multiplier.
 vm.config.speedMulti		= 1.5
+
+vm.config.allowedRanks = {
+	"superadmin",
+	"owner"
+}
 
 -- Table for soundLoop. Allows you to customize/remove sounds.
 vm.config.soundLoop = {

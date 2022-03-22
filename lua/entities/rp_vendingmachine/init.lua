@@ -79,11 +79,13 @@ end
 
 function ENT:CreateSoda()
 	self.Once = false
-	local fuck, you = LocalToWorld( Vector( 20, -5, -30 ), Angle( -90, -90, 0 ), self:GetPos(), self:GetAngles())
+	local fuck, you = LocalToWorld( Vector( 15, -2, -30 ), Angle( 0, 0, 90 ), self:GetPos(), self:GetAngles())
 	local soda = ents.Create("rp_soda")
 	soda:SetPos( fuck )
 	soda:SetAngles( you )
 	soda:Spawn()
+	soda:PhysWake()
+	soda:GetPhysicsObject():SetVelocity(Vector(you:Forward() * 15))
 end
 
 function ENT:OnRemove()

@@ -1,18 +1,8 @@
---[[
-	Author: Koz
-	Steam: http://steamcommunity.com/profiles/76561197989811664
-	Contact: mybbkoz@gmail.com
-
-	License:
-	You are free to use this software however you like; however,
-	you cannot redistribute this code in any way without consent
-	from the original author, Koz.
-]]--
-
 include("darkrp_config/vm_settings.lua")
 
 -- Do not edit below this point.
 resource.AddFile( "sound/oasisrp/soda/slurp.wav" )
+resource.AddFile( "sound/oasisrp/soda/opening.wav" )
 resource.AddFile( "sound/oasisrp/soda/burp.wav" )
 resource.AddFile( "sound/oasisrp/vendingmachine/insertcoin.wav" )
 

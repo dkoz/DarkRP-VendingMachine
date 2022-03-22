@@ -41,5 +41,24 @@ vm.config.speedTimer		= 30
 -- Controls the speed multiplier.
 vm.config.speedMulti		= 1.5
 
+-- Table for soundLoop. Allows you to customize/remove sounds.
+vm.config.soundLoop = {
+	{
+		Time = 1,
+		Sound = "oasisrp/soda/opening.wav",
+		Volume = 45
+	},
+	{
+		Time = 2,
+		Sound = "oasisrp/soda/slurp.wav",
+		Volume = 45
+	},
+	{
+		Time = 5,
+		Sound = "oasisrp/soda/burp.wav",
+		Volume = 45
+	},
+}
+
 -- Vending machine spawns are now handled under JSON format
 -- Use command "!sz vend" to save location of all vending machines on map.

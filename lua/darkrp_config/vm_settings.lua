@@ -21,7 +21,7 @@ vm.config.enableHunger		= false
 
 -- Sounds annoying you? Disable them.
 -- I think I never actually implemented this until now. lol
-vm.config.enableSounds		= true
+vm.config.enableSound		= true
 
 -- Disable vending machine when there is a cook.
 vm.config.enableCook		= false

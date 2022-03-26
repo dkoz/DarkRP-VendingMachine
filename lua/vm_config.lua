@@ -27,7 +27,9 @@ vm.config.enableCook		= false
 -- Controls how much soda will cost from vending machine.
 vm.config.sodaPrice			= 25
 -- Controls how much health the soda will give.
-vm.config.sodaHeal			= 15
+vm.config.sodaHeal			= 25
+-- Controls the max amount of HP can be gained. (Def = 100)
+vm.config.maxHealth			= 100
 -- Controls how much energy the soda will give. (HungerMod Only)
 vm.config.sodaEnergy		= 10
 -- Control how much armor the soda will give.

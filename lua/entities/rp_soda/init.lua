@@ -60,7 +60,10 @@ function ENT:Use( activator )
 	end
 	
 	if vm.config.enableHeal == true then
-		activator:SetHealth( math.Clamp( ( activator:Health() or 100 ) + vm.config.sodaHeal, 0, 100) )
+		local maxhp = vm.config.maxHealth
+		-- Fix for max health being reset back to 100 if value was more.
+		if (activator:Health() >= maxhp) then self:Remove() return end
+		activator:SetHealth( math.Clamp( ( activator:Health() or maxhp ) + vm.config.sodaHeal, 0, maxhp) )
 	end
 
 	if activator:Health() <= 0 then
